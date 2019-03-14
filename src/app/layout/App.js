@@ -15,15 +15,13 @@ class App extends Component {
   render() {
     return (
       <>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-        </Switch>
+        <Route exact path="/" component={HomePage} />
 
         <Route
           path="/(.+)"
-          render={(props) => (
+          render={props => (
             <>
-              <NavBar {...props}/>
+              <NavBar {...props} />
               <Container className="main">
                 <Switch>
                   <Route path="/events" component={EventDashboard} />
