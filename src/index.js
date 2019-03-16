@@ -6,7 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./index.css";
 
 import { configureStore } from './app/store/configureStore';
-import ScrollToTop from './app/common/util/ScrollToTop';
+import ScrollToTop from './app/common/utils/ScrollToTop';
 import App from "./app/layout/App";
 
 const store = configureStore();
