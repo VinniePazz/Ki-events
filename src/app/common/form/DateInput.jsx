@@ -11,7 +11,7 @@ const DateInput = ({
   meta: { touched, error },
   ...rest
 }) => {
-	console.log(restInput, '...................................................................', rest, value)
+	
   return (
     <Form.Field error={touched && !!error} width={width}>
       <DatePicker
