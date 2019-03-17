@@ -14,7 +14,7 @@ const styles = {
 
 class PlaceInput extends Component {
   state = {
-    scriptLoaded: true
+    scriptLoaded: false
   };
 
   handleScriptLoaded = () => this.setState({ scriptLoaded: true });
@@ -30,6 +30,10 @@ class PlaceInput extends Component {
     } = this.props;
     return (
       <Form.Field error={touched && !!error} width={width}>
+        <Script
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH4J9SX8LTmmiyOw646STCP5Sy6S8SI-w&libraries=places"
+          onLoad={this.handleScriptLoaded}
+        />
         {this.state.scriptLoaded && (
           <PlacesAutocomplete
             inputProps={{ ...input, placeholder }}
