@@ -1,17 +1,23 @@
-import React from 'react';
-import { Form, Segment, Button, Label } from 'semantic-ui-react';
-import { connect } from 'react-redux'
-import { Field, reduxForm } from 'redux-form';
-import TextInput from '../../../app/common/form/TextInput';
-import { login } from '../authActions'
+import React from "react";
+import { Form, Segment, Button, Label, Divider } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import TextInput from "../../../app/common/form/TextInput";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import { login, socialLogin } from "../authActions";
 
 const actions = {
-  login
-}
+	login,
+	socialLogin
+};
 
-const LoginForm = ({login, handleSubmit, error}) => {
+const LoginForm = ({ login, handleSubmit, error, socialLogin }) => {
   return (
-    <Form size="large" onSubmit={handleSubmit(login)} style={{textAlign: 'center'}}>
+    <Form
+      size="large"
+      onSubmit={handleSubmit(login)}
+      style={{ textAlign: "center" }}
+    >
       <Segment>
         <Field
           name="email"
@@ -25,13 +31,22 @@ const LoginForm = ({login, handleSubmit, error}) => {
           type="password"
           placeholder="password"
         />
-				{error && <Label basic color='red' style={{marginBottom: '1em'}}>{error}</Label>}
+        {error && (
+          <Label basic color="red" style={{ marginBottom: "1em" }}>
+            {error}
+          </Label>
+        )}
         <Button fluid size="large" color="teal">
           Login
         </Button>
+				<Divider horizontal>Or</Divider>
+        <SocialLogin socialLogin={socialLogin}/>
       </Segment>
     </Form>
   );
 };
 
-export default connect(null, actions)(reduxForm({form: 'loginForm'})(LoginForm));
+export default connect(
+  null,
+  actions
+)(reduxForm({ form: "loginForm" })(LoginForm));
