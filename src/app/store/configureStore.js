@@ -1,16 +1,26 @@
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from 'redux-thunk'
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import thunk from "redux-thunk";
 
+
+import { createFirestoreInstance } from 'redux-firestore'
+
+import firebase from "../config/firebase";
 import rootReducer from "../reducers/rootReducer";
 
+
+
 export const configureStore = preloadedState => {
-  const middlewares = [thunk];
+  const middlewares = [thunk.withExtraArgument({ getFirebase, getFirestore })];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
   const storeEnhancers = [middlewareEnhancer];
 
-  const composedEnhancer = composeWithDevTools(...storeEnhancers);
+  const composedEnhancer = composeWithDevTools(
+    ...storeEnhancers
+  );
 
   const store = createStore(rootReducer, preloadedState, composedEnhancer);
 
