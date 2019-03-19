@@ -44,7 +44,7 @@ export const registerUser = user => async (
     await firestore.set(`users/${createdUser.uid}`, { ...newUser });
     dispatch(closeModal());
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw new SubmissionError({
       _error: error.message
     });
