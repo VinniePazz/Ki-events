@@ -3,9 +3,10 @@ import { Grid, Header, Icon, Item, List, Segment } from 'semantic-ui-react';
 import format from 'date-fns/format';
 
 const UserDetailedDescription = ({ profile }) => {
-  let createdAt;
+	let createdAt;
+	console.log(profile)
   if (profile.createdAt) {
-    createdAt = format(profile.createdAt.toDate(), 'D MMM YYYY');
+    createdAt = format(profile.createdAt, 'D MMM YYYY');
   }
   return (
     <Grid.Column width={12}>

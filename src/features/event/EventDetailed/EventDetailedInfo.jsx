@@ -8,11 +8,11 @@ class EventDetailedInfo extends Component {
     showMap: false
   }
 
-	componentWillMount() {
-		this.setState({
-			showMap: false
-		})
-	}
+  componentWillUnmount() {
+    this.setState({
+      showMap: false
+    })
+  }
 
   showMapToggle = () => {
     this.setState(prevState => ({
@@ -22,6 +22,7 @@ class EventDetailedInfo extends Component {
 
   render() {
     const { event } = this.props;
+
     return (
       <Segment.Group>
         <Segment attached="top">
