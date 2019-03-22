@@ -11,10 +11,9 @@ import { goingToEvent, cancelGoingToEvent } from '../../user/userActions';
 
 const mapState = (state, ownProps) => {
 	let event = {};
-	const id = ownProps.match.params.id
 
   if (state.firestore.ordered.events && state.firestore.ordered.events[0]) {
-    event = state.firestore.data.events[id];
+    event = state.firestore.ordered.events[0];
   }
 
   return {

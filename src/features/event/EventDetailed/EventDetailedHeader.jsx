@@ -17,7 +17,7 @@ const eventImageTextStyle = {
 };
 
 const EventDetailedHeader = ({event, isHost, isGoing, goingToEvent, cancelGoingToEvent}) => {
-
+	console.log(format(event.date, 'dddd Do MMMM'))
   return (
     <Segment.Group>
       <Segment basic attached="top" style={{ padding: '0' }}>
