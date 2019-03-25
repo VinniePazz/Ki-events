@@ -40,11 +40,7 @@ export const updateEvent = event => {
 		console.log(event)
     const firestore = getFirestore();
 		event.date = moment(event.date).toDate()
-		// '2019-03-25T08:00:00.000Z' приходит от стора
-    // if (event.date !== getState().firestore.ordered.events[0].date) {
-		// 	event.date = moment(event.date).toDate();
-		// 	console.log(event.date)
-    // }
+
     try {
       await firestore.update(`events/${event.id}`, event);
       toastr.success('Success', 'Event has been updated');
@@ -131,3 +127,24 @@ export const getEventsForDashboard = lastEvent => async (dispatch, getState) => 
     dispatch(asyncActionError());
   }
 };
+
+export const addEventComment = (eventId, values, parentId) => 
+  async (dispatch, getState, {getFirebase}) => {
+    const firebase = getFirebase();
+    const profile = getState().firebase.profile;
+    const user = firebase.auth().currentUser;
+    let newComment = {
+      parentId: parentId,
+      displayName: profile.displayName,
+      photoURL: profile.photoURL || '/assets/user.png',
+      uid: user.uid,
+      text: values.comment,
+      date: Date.now()
+    }
+    try {
+      await firebase.push(`event_chat/${eventId}`, newComment)
+    } catch (error) {
+      console.log(error);
+      toastr.error('Oops', 'Problem adding comment')
+    }
+  }
