@@ -14,7 +14,7 @@ function HomePage({ history }) {
             <div className="content">Re-vents</div>
           </h1>
           <h2>Do whatever you want to do</h2>
-          <div  onClick={() => history.push('/event')} className="ui huge white inverted button">
+          <div onClick={() => history.push('/event')} className="ui huge white inverted button">
             Get Started
             <i className="right arrow icon" />
           </div>

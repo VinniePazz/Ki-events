@@ -19,7 +19,8 @@ const mapState = (state, ownProps) => {
   }
 
   return {
-    event,
+		event,
+		loading: state.async.loading,
 		auth: state.firebase.auth,
 		eventChat:
       !isEmpty(state.firebase.data.event_chat) &&
@@ -45,7 +46,7 @@ class EventDetailedPage extends Component {
   }
 
   render() {
-    const { event, auth, goingToEvent, cancelGoingToEvent, addEventComment, eventChat } = this.props;
+    const { event, loading, auth, goingToEvent, cancelGoingToEvent, addEventComment, eventChat } = this.props;
     const attendees =
       event && event.attendees && objectToArray(event.attendees);
 		const isHost = event.hostUid === auth.uid;
@@ -56,6 +57,7 @@ class EventDetailedPage extends Component {
         <Grid.Column width={10}>
           <EventDetailedHeader
             event={event}
+						loading={loading}
             isHost={isHost}
             isGoing={isGoing}
             goingToEvent={goingToEvent}
