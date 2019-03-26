@@ -6,9 +6,7 @@ import moment from 'moment'
 
 const DateInput = ({input: {value, onChange, onBlur, ...restInput}, width, placeholder, meta: {touched, error}, ...rest}) => {
   if (value) {
-		console.log(value)
 		value = moment(value).toDate()
-		console.log(value)
   }
   return (
 

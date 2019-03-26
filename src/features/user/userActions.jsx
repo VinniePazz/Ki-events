@@ -133,7 +133,7 @@ export const deletePhoto = (photo) =>
 					})
 				}
 			}
-			console.log(batch);
+
 			await batch.commit();
 			dispatch(asyncActionFinish());
 			toastr.success('Success', 'Main photo has been updated');
@@ -148,12 +148,12 @@ export const deletePhoto = (photo) =>
 		dispatch(asyncActionStart())
 		const firestore = firebase.firestore();
 		const user = firebase.auth().currentUser;
-		const photoURL = getState().firebase.profile.photoURL;
+		const profile = getState().firebase.profile;
 		const attendee = {
 			going: true,
 			joinDate: Date.now(),
-			photoURL: photoURL || '/assets/user.png',
-			displayName: user.displayName,
+			photoURL: profile.photoURL || '/assets/user.png',
+			displayName: profile.displayName,
 			host: false
 		};
 		try {

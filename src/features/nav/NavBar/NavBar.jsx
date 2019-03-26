@@ -28,8 +28,8 @@ class NavBar extends Component {
   handleSignOut = () => {
     this.props.firebase.logout();
     this.props.history.push("/");
-  };
-
+	};
+	
   render() {
     const { auth, profile } = this.props;
     const authenticated = auth.isLoaded && !auth.isEmpty;
