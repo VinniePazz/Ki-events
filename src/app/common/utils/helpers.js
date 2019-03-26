@@ -2,7 +2,6 @@ import moment from 'moment'
 
 export const objectToArray = (object) => {
   if (object) {
-		console.log('OBJECTTOARRAY', object)
 		const result = Object.entries(object)
 			.map(e => ({...e[1], id: e[0]}) );
 		return result;
