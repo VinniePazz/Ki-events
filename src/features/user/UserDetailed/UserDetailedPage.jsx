@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, GridRow } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { firestoreConnect, isEmpty } from 'react-redux-firebase';
 import { compose } from 'redux';
@@ -64,13 +64,23 @@ class UserDetailedPage extends Component {
 
     if (loading) return <LoadingComponent inverted={true}/>
     return (
-      <Grid>
-        <UserDetailedHeader profile={profile}/>
-        <UserDetailedDescription profile={profile}/>
-        <UserDetailedSidebar unfollowUser={unfollowUser} isFollowing={isFollowing} profile={profile} followUser={followUser} isCurrentUser={isCurrentUser}/>
-        {photos && photos.length > 0 &&
-        <UserDetailedPhotos photos={photos}/>}
-        <UserDetailedEvents changeTab={this.changeTab} events={events} eventsLoading={eventsLoading}/>
+      <Grid stackable>
+				<Grid.Row>
+					<UserDetailedHeader profile={profile}/>
+				</Grid.Row>
+				<Grid.Row columns={2}>
+
+						<UserDetailedDescription profile={profile}/>
+						<UserDetailedSidebar unfollowUser={unfollowUser} isFollowing={isFollowing} profile={profile} followUser={followUser} isCurrentUser={isCurrentUser}/>
+					
+				</Grid.Row>
+				<Grid.Row>
+					{photos && photos.length > 0 &&
+					<UserDetailedPhotos photos={photos}/>}
+				</Grid.Row>
+				<Grid.Row>
+					<UserDetailedEvents changeTab={this.changeTab} events={events} eventsLoading={eventsLoading}/>
+				</Grid.Row>  
       </Grid>
     );
   }

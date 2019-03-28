@@ -1,19 +1,10 @@
 import React from 'react';
 import { Segment, Image, Item, Header, Button, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-import format from 'date-fns/format'
+
 
 const eventImageStyle = {
     filter: 'brightness(30%)'
-};
-
-const eventImageTextStyle = {
-    position: 'absolute',
-    bottom: '5%',
-    left: '5%',
-    width: '100%',
-    height: 'auto',
-    color: 'white'
 };
 
 const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost, isGoing, goingToEvent, cancelGoingToEvent}) => {
@@ -23,18 +14,17 @@ const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost,
       <Segment basic attached="top" style={{ padding: '0' }}>
         <Image src={`/assets/categoryImages/${event.category}.jpg`} fluid style={eventImageStyle} />
 
-        <Segment basic style={eventImageTextStyle}>
+        <Segment basic className="header">
         <Item.Group>
-            <Item>
+            <Item style={{ margin: '0' }}>
               <Item.Content>
                 <Header
                   size="huge"
                   content={event.title}
-                  style={{ color: 'white' }}
+                  style={{ color: 'white', marginBottom: '.2em' }}
                 />
-                <p>{format(event.date, 'dddd Do MMMM')}</p>
                 <p>
-                  Hosted by <strong>{event.hostedBy}</strong>
+                  Hosted by <Link to={`/profile/${event.hostUid}`} style={{color: '#ffffff'}}>{event.hostedBy}</Link>
                 </p>
               </Item.Content>
             </Item>
@@ -65,7 +55,7 @@ const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost,
             to={`/manage/${event.id}`}
             color="orange"
           >
-            Manage Event
+            Редактировать
           </Button>
         )}
       </Segment>

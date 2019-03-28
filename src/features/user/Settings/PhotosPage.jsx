@@ -118,23 +118,21 @@ class PhotosPage extends Component {
     return (
       <Segment>
         <Header dividing size="large" content="Your Photos" />
-        <Grid>
-          <Grid.Row />
-          <Grid.Column width={4}>
+        <Grid columns="equal">
+          <Grid.Column textAlign="center">
             <Header color="teal" sub content="Step 1 - Add Photo" />
-            <Dropzone onDrop={this.onDrop} multiple={false}>
+            <Dropzone onDrop={this.onDrop} multiple={false} style={{width: '100%', height: '100%', border: '1px dashed black', }}>
               <div style={{ paddingTop: '30px', textAlign: 'center' }}>
-                <Icon name="upload" size="huge" />
+                <Icon name="upload" size="large" />
                 <Header content="Drop image here or click to upload" />
               </div>
             </Dropzone>
           </Grid.Column>
-          <Grid.Column width={1} />
-          <Grid.Column width={4}>
+          <Grid.Column textAlign="center">
             <Header sub color="teal" content="Step 2 - Resize image" />
             {this.state.files[0] && (
               <Cropper
-                style={{ height: 200, width: '100%' }}
+                style={{ height: '200px', width: '100%' }}
                 ref="cropper"
                 src={this.state.files[0].preview}
                 aspectRatio={1}
@@ -148,27 +146,26 @@ class PhotosPage extends Component {
               />
             )}
           </Grid.Column>
-          <Grid.Column width={1} />
-          <Grid.Column width={4}>
+          <Grid.Column textAlign="center">
             <Header sub color="teal" content="Step 3 - Preview and Upload" />
             {this.state.files[0] && (
-              <div>
+              <div style={{width: '100%'}}>
                 <Image
-                  style={{ minHeight: '200px', minWidth: '200px' }}
+                  style={{ maxWidth: '100%' }}
                   src={this.state.cropResult}
                 />
-                <Button.Group>
+                <Button.Group style={{width: '100%'}}>
                   <Button
                     loading={loading}
                     onClick={this.uploadImage}
-                    style={{ width: '100px' }}
+                    
                     positive
                     icon="check"
                   />
                   <Button
                     disabled={loading}
                     onClick={this.cancelCrop}
-                    style={{ width: '100px' }}
+                    
                     icon="close"
                   />
                 </Button.Group>

@@ -4,14 +4,14 @@ import { Menu, Button } from "semantic-ui-react";
 function SignedOutMenu({ signIn, register }) {
   return (
     <Menu.Item position="right">
-      <Button basic inverted content="Login" onClick={signIn} />
       <Button
         onClick={register}
-        basic
-        inverted
-        content="Register"
-        style={{ marginLeft: "0.5em" }}
+        content="Регистрация"
+				inverted
+				basic
+				style={{ marginRight: '.5em' }}
       />
+      <Button basic inverted icon="sign-in" onClick={signIn} />
     </Menu.Item>
   );
 }

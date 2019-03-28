@@ -74,7 +74,7 @@ class EventDetailedPage extends Component {
     if (loadingEvent || this.state.initialLoading) return <LoadingComponent inverted={true}/>
 
     return (
-      <Grid>
+      <Grid stackable>
         <Grid.Column width={10}>
           <EventDetailedHeader
             event={event}

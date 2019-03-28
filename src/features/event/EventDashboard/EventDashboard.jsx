@@ -41,7 +41,11 @@ class EventDashboard extends Component {
         moreEvents: true,
         loadingInitial: false
       });
-    }
+    } else {
+			this.setState({
+        loadingInitial: false
+			})
+		}
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,7 +75,7 @@ class EventDashboard extends Component {
     if (this.state.loadingInitial) return <LoadingComponent inverted={true} />;
 
     return (
-      <Grid>
+      <Grid stackable>
         <Grid.Column width={10}>
           <div ref={this.handleContextRef}>
           <EventList

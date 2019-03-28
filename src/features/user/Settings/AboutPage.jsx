@@ -8,12 +8,12 @@ import PlaceInput from '../../../app/common/form/PlaceInput';
 import SelectInput from '../../../app/common/form/SelectInput';
 
 const interests = [
-  { key: 'drinks', text: 'Drinks', value: 'drinks' },
-  { key: 'culture', text: 'Culture', value: 'culture' },
-  { key: 'film', text: 'Film', value: 'film' },
-  { key: 'food', text: 'Food', value: 'food' },
-  { key: 'music', text: 'Music', value: 'music' },
-  { key: 'travel', text: 'Travel', value: 'travel' }
+  { key: 'party', text: 'вечеринки', value: 'вечеринки' },
+  { key: 'culture', text: 'культурный отдых', value: 'культурный отдых' },
+  { key: 'film', text: 'кинематограф', value: 'кинематограф' },
+  { key: 'food', text: 'кулинария', value: 'кулинария' },
+  { key: 'music', text: 'музыка', value: 'музыка' },
+  { key: 'travel', text: 'путешествия', value: 'путешествия' }
 ];
 
 const AboutPage = ({ pristine, submitting, handleSubmit, updateProfile }) => {

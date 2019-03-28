@@ -9,9 +9,9 @@ const UserDetailedDescription = ({ profile }) => {
   }
   return (
     <Grid.Column width={12}>
-      <Segment>
-        <Grid columns={2}>
-          <Grid.Column width={10}>
+      <Segment> 
+        <Grid columns={2} stackable>
+          <Grid.Column width={10} textAlign="left">
             <Header icon="smile" content="About Display Name" />
             <p>
               I am a: <strong>{profile.occupation || 'tbn'}</strong>
@@ -24,16 +24,15 @@ const UserDetailedDescription = ({ profile }) => {
             </p>
             <p>{profile.description}</p>
           </Grid.Column>
-          <Grid.Column width={6}>
-            <Header icon="heart outline" content="Interests" />
+          <Grid.Column width={6} >
+            <Header icon="heart outline" content="Интересы"  />
             {profile.interests ?
-            <List>
+            <List as="ul">
               {profile.interests &&
                 profile.interests.map((interest, index) => (
-                  <Item key={index}>
-                    <Icon name="heart" />
-                    <Item.Content>{interest}</Item.Content>
-                  </Item>
+                  <List.Item key={index} as="li">
+                    <List.Content>{interest}</List.Content>
+                  </List.Item>
                 ))}
             </List> : <p>No interests</p>}
           </Grid.Column>

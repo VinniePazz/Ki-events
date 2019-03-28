@@ -4,6 +4,8 @@ import EventDetailedChatForm from './EventDetailedChatForm';
 import { Link } from 'react-router-dom';
 import distanceInWords from 'date-fns/distance_in_words';
 
+const ruLocale = require('date-fns/locale/ru')
+
 class EventDetailedChat extends Component {
   state = {
     showReplyForm: false,
@@ -30,7 +32,7 @@ class EventDetailedChat extends Component {
     return (
       <div>
         <Segment textAlign="center" attached="top" inverted color="teal" style={{ border: 'none' }}>
-          <Header>Chat about this event</Header>
+          <Header>Обсуждение события</Header>
         </Segment>
 
         <Segment attached>
@@ -44,11 +46,11 @@ class EventDetailedChat extends Component {
                       {comment.displayName}
                     </Comment.Author>
                     <Comment.Metadata>
-                      <div>{distanceInWords(comment.date, Date.now())} ago</div>
+                      <div>{distanceInWords(comment.date, Date.now(), {locale: ruLocale})} назад</div>
                     </Comment.Metadata>
                     <Comment.Text>{comment.text}</Comment.Text>
                     <Comment.Actions>
-                      <Comment.Action onClick={this.handleOpenReplyForm(comment.id)}>Reply</Comment.Action>
+                      <Comment.Action onClick={this.handleOpenReplyForm(comment.id)}>Ответить</Comment.Action>
                       {showReplyForm &&
                         selectedCommentId === comment.id && (
                           <EventDetailedChatForm
@@ -72,11 +74,11 @@ class EventDetailedChat extends Component {
                               {child.displayName}
                             </Comment.Author>
                             <Comment.Metadata>
-                              <div>{distanceInWords(child.date, Date.now())} ago</div>
+                              <div>{distanceInWords(child.date, Date.now(), {locale: ruLocale})} назад</div>
                             </Comment.Metadata>
                             <Comment.Text>{child.text}</Comment.Text>
                             <Comment.Actions>
-                              <Comment.Action onClick={this.handleOpenReplyForm(child.id)}>Reply</Comment.Action>
+                              <Comment.Action onClick={this.handleOpenReplyForm(child.id)}>Ответить</Comment.Action>
                               {showReplyForm &&
                                 selectedCommentId === child.id && (
                                   <EventDetailedChatForm

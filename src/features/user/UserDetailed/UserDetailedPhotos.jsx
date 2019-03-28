@@ -1,10 +1,10 @@
-import React from 'react';
-import { Grid, Header, Image, Segment } from 'semantic-ui-react';
-import LazyLoad from 'react-lazyload';
+import React from "react";
+import { Grid, Header, Image, Segment } from "semantic-ui-react";
+import LazyLoad from "react-lazyload";
 
 const UserDetailedPhotos = ({ photos }) => {
   return (
-    <Grid.Column width={12}>
+    <Grid.Column width={16}>
       <Segment attached>
         <Header icon="image" content="Photos" />
 
