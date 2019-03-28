@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 import {
   Image,
   Segment,
   Header,
-  Divider,
   Grid,
   Button,
   Card,
   Icon
-} from 'semantic-ui-react';
-import { toastr } from 'react-redux-toastr';
-import Dropzone from 'react-dropzone';
-import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
-import { uploadProfileImage, deletePhoto, setMainPhoto } from '../userActions';
+} from "semantic-ui-react";
+import { toastr } from "react-redux-toastr";
+import Dropzone from "react-dropzone";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
+import { uploadProfileImage, deletePhoto, setMainPhoto } from "../userActions";
 
 const query = ({ auth }) => {
   return [
     {
-      collection: 'users',
+      collection: "users",
       doc: auth.uid,
-      subcollections: [{ collection: 'photos' }],
-      storeAs: 'photos'
+      subcollections: [{ collection: "photos" }],
+      storeAs: "photos"
     }
   ];
 };
@@ -42,10 +41,14 @@ const mapState = state => ({
   loading: state.async.loading
 });
 
+const style = {
+  marginBottom: "1em"
+};
+
 class PhotosPage extends Component {
   state = {
     files: [],
-    fileName: '',
+    fileName: "",
     cropResult: null,
     image: {}
   };
@@ -64,30 +67,30 @@ class PhotosPage extends Component {
         this.state.fileName
       );
       this.cancelCrop();
-      toastr.success('Success', 'Photo has been uploaded');
+      toastr.success("Success", "Photo has been uploaded");
     } catch (error) {
-      toastr.error('Oops', error.message);
+      toastr.error("Oops", error.message);
     }
   };
 
-  handlePhotoDelete = (photo) => async () => {
+  handlePhotoDelete = photo => async () => {
     try {
       this.props.deletePhoto(photo);
     } catch (error) {
-      toastr.error('Oops', error.message)
+      toastr.error("Oops", error.message);
     }
-  }
+  };
 
-  handleSetMainPhoto = (photo) => async () => {
+  handleSetMainPhoto = photo => async () => {
     try {
-      await this.props.setMainPhoto(photo)
+      await this.props.setMainPhoto(photo);
     } catch (error) {
-      toastr.error('Oops', error.message)
+      toastr.error("Oops", error.message);
     }
-  }
+  };
 
   cropImage = () => {
-    if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
+    if (typeof this.refs.cropper.getCroppedCanvas() === "undefined") {
       return;
     }
 
@@ -97,7 +100,7 @@ class PhotosPage extends Component {
         cropResult: imageUrl,
         image: blob
       });
-    }, 'image/jpeg');
+    }, "image/jpeg");
   };
 
   onDrop = files => {
@@ -112,95 +115,172 @@ class PhotosPage extends Component {
     let filteredPhotos;
     if (photos) {
       filteredPhotos = photos.filter(photo => {
-        return photo.url !== profile.photoURL
-      })
+        return photo.url !== profile.photoURL;
+      });
     }
     return (
-      <Segment>
-        <Header dividing size="large" content="Your Photos" />
-        <Grid columns="equal">
-          <Grid.Column textAlign="center">
-            <Header color="teal" sub content="Step 1 - Add Photo" />
-            <Dropzone onDrop={this.onDrop} multiple={false} style={{width: '100%', height: '100%', border: '1px dashed black', }}>
-              <div style={{ paddingTop: '30px', textAlign: 'center' }}>
-                <Icon name="upload" size="large" />
-                <Header content="Drop image here or click to upload" />
-              </div>
-            </Dropzone>
-          </Grid.Column>
-          <Grid.Column textAlign="center">
-            <Header sub color="teal" content="Step 2 - Resize image" />
-            {this.state.files[0] && (
-              <Cropper
-                style={{ height: '200px', width: '100%' }}
-                ref="cropper"
-                src={this.state.files[0].preview}
-                aspectRatio={1}
-                viewMode={0}
-                dragMode="move"
-                guides={false}
-                scalable={true}
-                cropBoxMovable={true}
-                cropBoxResizable={true}
-                crop={this.cropImage}
+      <>
+        <Segment>
+          <Header dividing content="Твои фотографии" textAlign="center" />
+          <Grid stackable centered>
+            <Grid.Column
+              textAlign="center"
+              width={5}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <Header
+                color="teal"
+                sub
+                content="Шаг 1 - Добавьте фото"
+                style={style}
               />
-            )}
-          </Grid.Column>
-          <Grid.Column textAlign="center">
-            <Header sub color="teal" content="Step 3 - Preview and Upload" />
-            {this.state.files[0] && (
-              <div style={{width: '100%'}}>
-                <Image
-                  style={{ maxWidth: '100%' }}
-                  src={this.state.cropResult}
-                />
-                <Button.Group style={{width: '100%'}}>
-                  <Button
-                    loading={loading}
-                    onClick={this.uploadImage}
-                    
-                    positive
-                    icon="check"
-                  />
-                  <Button
-                    disabled={loading}
-                    onClick={this.cancelCrop}
-                    
-                    icon="close"
-                  />
-                </Button.Group>
-              </div>
-            )}
-          </Grid.Column>
-        </Grid>
-
-        <Divider />
-        <Header sub color="teal" content="All Photos" />
-
-        <Card.Group itemsPerRow={5}>
-          <Card>
-            <Image src={profile.photoURL || '/assets/user.png'} />
-            <Button positive>Main Photo</Button>
-          </Card>
-          {photos &&
-            filteredPhotos.map(photo => (
-              <Card key={photo.id}>
-                <Image src={photo.url} />
-                <div className="ui two buttons">
-                  <Button loading={loading} onClick={this.handleSetMainPhoto(photo)} basic color="green">
-                    Main
-                  </Button>
-                  <Button onClick={this.handlePhotoDelete(photo)} basic icon="trash" color="red" />
+              <Dropzone
+                onDrop={this.onDrop}
+                multiple={false}
+                style={{ height: "auto", border: "1px dashed black" }}
+              >
+                <div style={{ padding: "2em 0", textAlign: "center" }}>
+                  <Icon name="upload" size="large" />
+                  <Header content="Кликните сюда или перетащите файл" />
                 </div>
+              </Dropzone>
+            </Grid.Column>
+            <Grid.Column
+              textAlign="center"
+              width={5}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <Header
+                sub
+                color="teal"
+                content="Шаг 2 - Измените размер"
+                style={style}
+              />
+              {this.state.files[0] && (
+                <Cropper
+                  style={{ height: "14rem", width: "100%" }}
+                  ref="cropper"
+                  src={this.state.files[0].preview}
+                  aspectRatio={1}
+                  viewMode={0}
+                  dragMode="move"
+                  guides={true}
+                  scalable={true}
+                  cropBoxMovable={true}
+                  cropBoxResizable={true}
+                  crop={this.cropImage}
+                />
+              )}
+            </Grid.Column>
+            <Grid.Column textAlign="center" width={5}>
+              <Header
+                sub
+                color="teal"
+                content="Шаг 3 - Загрузите фото"
+                style={style}
+              />
+              {this.state.files[0] && (
+                <div
+                  style={{
+                    width: "80%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "0 auto"
+                  }}
+                >
+                  <Image
+                    style={{ width: "100%" }}
+                    src={this.state.cropResult}
+                  />
+                  <Button.Group style={{ width: "100%" }}>
+                    <Button
+                      loading={loading}
+                      onClick={this.uploadImage}
+                      positive
+                      icon="check"
+                    />
+                    <Button
+                      disabled={loading}
+                      onClick={this.cancelCrop}
+                      icon="close"
+                    />
+                  </Button.Group>
+                </div>
+              )}
+            </Grid.Column>
+          </Grid>
+        </Segment>
+
+        <Segment>
+          <Header content="Все фотографии" textAlign="center" style={style} />
+
+          <Grid>
+            <Grid.Column
+              tablet={8}
+              mobile={8}
+              computer={4}
+              largeScreen={4}
+              widescreen={4}
+            >
+              <Card>
+                <Image src={profile.photoURL || "/assets/user.png"} />
+                <Button positive style={{ padding: ".8em .5em" }}>
+                  Фото профиля
+                </Button>
               </Card>
-            ))}
-        </Card.Group>
-      </Segment>
+            </Grid.Column>
+            {photos &&
+              filteredPhotos.map(photo => (
+                <Grid.Column
+                  tablet={8}
+                  mobile={8}
+                  computer={4}
+                  largeScreen={4}
+                  widescreen={4}
+                >
+                  <Card key={photo.id}>
+                    <Image src={photo.url} />
+                    <div className="ui two buttons">
+                      <Button
+                        loading={loading}
+                        onClick={this.handleSetMainPhoto(photo)}
+                        basic
+                        icon="trash"
+                        color="green"
+                      >
+                        Main
+                      </Button>
+                      <Button
+                        onClick={this.handlePhotoDelete(photo)}
+                        basic
+                        icon="trash"
+                        color="red"
+                      />
+                    </div>
+                  </Card>
+                </Grid.Column>
+              ))}
+          </Grid>
+        </Segment>
+      </>
     );
   }
 }
 
 export default compose(
-  connect(mapState, actions),
+  connect(
+    mapState,
+    actions
+  ),
   firestoreConnect(auth => query(auth))
 )(PhotosPage);

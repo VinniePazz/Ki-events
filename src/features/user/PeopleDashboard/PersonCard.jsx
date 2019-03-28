@@ -9,9 +9,6 @@ const PersonCard = ({user}) => {
             <Card.Content textAlign='center'>
                 <Card.Header content={user.displayName}/>
             </Card.Content>
-            <Card.Meta textAlign='center'>
-                <span>{user.city}</span>
-            </Card.Meta>
         </Card>
     );
 };

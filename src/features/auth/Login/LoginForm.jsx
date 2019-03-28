@@ -23,13 +23,13 @@ const LoginForm = ({ login, handleSubmit, error, socialLogin }) => {
           name="email"
           component={TextInput}
           type="text"
-          placeholder="Email Address"
+          placeholder="Email"
         />
         <Field
           name="password"
           component={TextInput}
           type="password"
-          placeholder="password"
+          placeholder="пароль"
         />
         {error && (
           <Label basic color="red" style={{ marginBottom: "1em" }}>
@@ -37,9 +37,9 @@ const LoginForm = ({ login, handleSubmit, error, socialLogin }) => {
           </Label>
         )}
         <Button fluid size="large" color="teal">
-          Login
+          Вход
         </Button>
-				<Divider horizontal>Or</Divider>
+				<Divider horizontal>или</Divider>
         <SocialLogin socialLogin={socialLogin}/>
       </Segment>
     </Form>

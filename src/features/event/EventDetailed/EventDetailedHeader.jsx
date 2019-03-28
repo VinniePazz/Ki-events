@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment, Image, Item, Header, Button, Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-
+import format from 'date-fns/format'
 
 const eventImageStyle = {
     filter: 'brightness(30%)'
@@ -36,13 +36,13 @@ const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost,
         {!isHost && (
           <div>
 						{isGoing &&
-							<Button onClick={() => cancelGoingToEvent(event)}>Cancel My Place</Button>}
+							<Button onClick={() => cancelGoingToEvent(event)}>Отказаться</Button>}
 
 						{!isGoing && authenticated && !event.cancelled &&
-							<Button loading={loading} onClick={() => goingToEvent(event)} color="teal">JOIN THIS EVENT</Button>}
+							<Button loading={loading} onClick={() => goingToEvent(event)} color="teal">Пойти на встречу</Button>}
 								
 						{!authenticated && !event.cancelled &&
-							<Button loading={loading} onClick={() => openModal('UnauthModal')} color="teal">LOGIN TO JOIN THIS EVENT</Button>}
+							<Button loading={loading} onClick={() => openModal('UnauthModal')} color="teal">Пойти на встречу</Button>}
 
 						{event.cancelled && !isHost &&
 						<Label size='large' color='red' content='This event has been cancelled'/>}
@@ -51,11 +51,12 @@ const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost,
 
         {isHost && (
           <Button
+						disabled={Date.now() > format(event.date, 'x')}
             as={Link}
             to={`/manage/${event.id}`}
             color="orange"
           >
-            Редактировать
+            {Date.now() > format(event.date, 'x') ? 'Встреча прошла' : 'Редактировать'}
           </Button>
         )}
       </Segment>

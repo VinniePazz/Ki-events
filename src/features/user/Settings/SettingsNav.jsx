@@ -6,10 +6,10 @@ function SettingsNav() {
   return (
 			<>
 				<Menu vertical>
-					<Header icon="user" attached inverted color="grey" content="Profile" />
-					<Menu.Item as={NavLink} to='/settings/basic'>Basics</Menu.Item>
-					<Menu.Item as={NavLink} to='/settings/about'>About Me</Menu.Item>
-					<Menu.Item as={NavLink} to='/settings/photos'>My Photos</Menu.Item>
+					<Header icon="user" attached inverted color="grey" content="Профиль" />
+					<Menu.Item as={NavLink} to='/settings/basic'>Общие</Menu.Item>
+					<Menu.Item as={NavLink} to='/settings/about'>Обо мне</Menu.Item>
+					<Menu.Item as={NavLink} to='/settings/photos'>Фотографии</Menu.Item>
 				</Menu>
 				
 				<Menu vertical>
@@ -18,9 +18,9 @@ function SettingsNav() {
 						attached
 						inverted
 						color="grey"
-						content="Account"
+						content="Аккаунт"
 					/>
-					<Menu.Item as={NavLink} to='/settings/account'>My Account</Menu.Item>
+					<Menu.Item as={NavLink} to='/settings/account'>Изменить пароль</Menu.Item>
 				</Menu>
 			</>
   );

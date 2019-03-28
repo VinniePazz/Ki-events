@@ -18,10 +18,10 @@ import {
 import TextInput from '../../../app/common/form/TextInput';
 
 const validate = combineValidators({
-  newPassword1: isRequired({ message: 'Please enter a password' }),
+  newPassword1: isRequired({ message: 'Пожалуйста, введите пароль' }),
   newPassword2: composeValidators(
-    isRequired({ message: 'Please confirm your new password' }),
-    matchesField('newPassword1')({ message: 'Passwords do not match' })
+    isRequired({ message: 'Пожалуйста, подтвердите новый пароль' }),
+    matchesField('newPassword1')({ message: 'Пароли не совпадают!' })
   )()
 });
 
@@ -34,33 +34,33 @@ const AccountPage = ({
   providerId
 }) => {
   return (
-    <Segment>
-      <Header dividing size="large" content="Account" />
+    <Segment clearing>
+      <Header dividing size="large" content="Аккаунт" />
       {providerId &&
         providerId === 'password' && (
           <div>
-            <Header color="teal" sub content="Change password" />
-            <p>Use this form to update your account settings</p>
+            <Header color="teal" sub content="Измените ваш пароль" style={{ marginBottom: '1em' }} />
+            
             <Form onSubmit={handleSubmit(updatePassword)}>
               <Field
-                width={8}
+                
                 name="newPassword1"
                 type="password"
                 pointing="left"
                 inline={true}
                 component={TextInput}
                 basic={true}
-                placeholder="New Password"
+                placeholder="новый пароль"
               />
               <Field
-                width={8}
+                
                 name="newPassword2"
                 type="password"
                 inline={true}
                 basic={true}
                 pointing="left"
                 component={TextInput}
-                placeholder="Confirm Password"
+                placeholder="подтвердите пароль"
               />
               {error && (
                 <Label basic color="red">
@@ -72,7 +72,8 @@ const AccountPage = ({
                 disabled={invalid || submitting}
                 size="large"
                 positive
-                content="Update Password"
+                content="Подтвердить"
+								floated="right"
               />
             </Form>
           </div>
@@ -81,10 +82,10 @@ const AccountPage = ({
         providerId === 'google.com' && (
           <div>
             <Header color="teal" sub content="Google Account" />
-            <p>Please visit Google to update your account settings</p>
+            <p>Пожалуйста, посетите Google чтобы обновить вашы настройки</p>
             <Button type="button" color="google plus">
               <Icon name="google plus" />
-              Go to Google
+              Google
             </Button>
           </div>
         )}

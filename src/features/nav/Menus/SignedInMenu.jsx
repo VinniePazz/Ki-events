@@ -6,7 +6,7 @@ const SignedInMenu = ({signOut, profile, auth}) => {
   return (
     <Menu.Item position="right" style={{padding: '.1em .5em'}}>
       <Image avatar spaced="right" src={profile.photoURL || "/assets/user.png"} />
-      <Dropdown pointing="top left" text={profile.displayName}>
+      <Dropdown pointing="top right" text={profile.displayName}>
         <Dropdown.Menu>
           <Dropdown.Item as={Link} to={'/createEvent'} text="Создать встречу" icon="plus" />
           <Dropdown.Item as={Link} to="/people" text="Подписчики" icon="users" />

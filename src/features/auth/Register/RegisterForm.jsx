@@ -13,9 +13,9 @@ const actions = {
 };
 
 const validate = combineValidators({
-  displayName: isRequired("displayName"),
-  email: isRequired("email"),
-  password: isRequired("password")
+  displayName: isRequired({ message: 'Пожалуйста, введите логин' }),
+  email: isRequired({ message: 'Пожалуйста, введите email' }),
+  password: isRequired({ message: 'Пожалуйста, введите пароль' })
 });
 
 const RegisterForm = ({
@@ -34,7 +34,7 @@ const RegisterForm = ({
             name="displayName"
             type="text"
             component={TextInput}
-            placeholder="Known As"
+            placeholder="имя"
           />
           <Field
             name="email"
@@ -46,7 +46,7 @@ const RegisterForm = ({
             name="password"
             type="password"
             component={TextInput}
-            placeholder="Password"
+            placeholder="пароль"
           />
           {error && (
             <Label basic color="red">
@@ -59,9 +59,9 @@ const RegisterForm = ({
             size="large"
             color="teal"
           >
-            Register
+            Зарегистрироваться
           </Button>
-          <Divider horizontal>Or</Divider>
+          <Divider horizontal>или</Divider>
           <SocialLogin socialLogin={socialLogin} />
         </Segment>
       </Form>

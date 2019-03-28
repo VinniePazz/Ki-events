@@ -11,35 +11,35 @@ class BasicPage extends Component {
   render() {
     const { pristine, submitting, handleSubmit, updateProfile } = this.props;
     return (
-      <Segment>
+      <Segment clearing>
         <Header dividing size="large" content="Basics" />
         <Form onSubmit={handleSubmit(updateProfile)}>
           <Field
-            width={8}
+            width={16}
             name="displayName"
             type="text"
             component={TextInput}
-            placeholder="Known As"
+            placeholder="Ваше имя"
           />
           <Form.Group inline>
-            <label>Gender: </label>
+            <label>Пол: </label>
             <Field
               name="gender"
               type="radio"
               value="male"
-              label="Male"
+              label="Мужской"
               component={RadioInput}
             />
             <Field
               name="gender"
               type="radio"
               value="female"
-              label="Female"
+              label="Женский"
               component={RadioInput}
             />
           </Form.Group>
           <Field
-            width={8}
+            width={16}
             name="dateOfBirth"
             component={DateInput}
             dateFormat='YYYY-MM-DD'
@@ -47,22 +47,22 @@ class BasicPage extends Component {
             showMonthDropdown={true}
             dropdownMode='select'
             maxDate={moment().subtract(18, 'years')}
-            placeholder="Date of Birth"
+            placeholder="Дата рождения"
           />
           <Field
             name="city"
-            placeholder="Home Town"
+            placeholder="Место проживания"
             options={{ types: ['(cities)'] }}
-            label="Female"
             component={PlaceInput}
-            width={8}
+            width={16}
           />
           <Divider />
           <Button
+					floated="right"
             disabled={pristine || submitting}
             size="large"
             positive
-            content="Update Profile"
+            content="Обновить"
           />
         </Form>
       </Segment>

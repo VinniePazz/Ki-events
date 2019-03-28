@@ -40,10 +40,11 @@ const actions = {
 };
 
 const category = [
-  { key: "drinks", text: "Вечеринка", value: "drinks" },
-  { key: "culture", text: "Культура", value: "culture" },
+  { key: "party", text: "Вечеринка", value: "party" },
+  { key: "pub", text: "Паб", value: "pub" },
+  { key: "culture", text: "Культурное мероприятие", value: "culture" },
   { key: "film", text: "Кино", value: "film" },
-  { key: "food", text: "Ужин", value: "food" },
+  { key: "food", text: "Званый Ужин", value: "food" },
   { key: "music", text: "Музыка", value: "music" },
   { key: "entertainment", text: "Развлечения", value: "entertainment" },
   { key: "picnic", text: "Пикник", value: "picnic" }
@@ -192,8 +193,7 @@ class EventForm extends Component {
                   component={PlaceInput}
                   options={{
                     location: new google.maps.LatLng(this.state.cityLatLng),
-                    radius: 1000,
-                    types: ["establishment"]
+                    radius: 1000
                   }}
                   placeholder="место"
                   onSelect={this.handleVenueSelect}

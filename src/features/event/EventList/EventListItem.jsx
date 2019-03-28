@@ -21,39 +21,7 @@ class EventListItem extends Component {
     return (
       <Segment.Group>
         <Segment style={{padding: '0'}}>
-          <Image alt="The logo of event" fluid src={`/assets/categoryImages/${event.category}.jpg`} as={Link} to={`/event/${event.id}`} />
-
-          {/* <Item.Group>
-            <Item className="eventItem">
-              <Item.Image
-                size="large"
-                src={`/assets/categoryImages/${event.category}.jpg`}
-              />
-							
-              <Item.Content>
-                <Item.Header as={Link} to={`/event/${event.id}`}>
-                  {event.title}
-                </Item.Header>
-                <Item.Description>{event.description}</Item.Description>
-                {!event.cancelled && (
-                  <Item.Description style={{textAlign: 'right', marginTop: '1em'}}>
-                    Предложил  {" "}
-                    <Link to={`/profile/${event.hostUid}`}>
-                      {event.hostedBy}
-                    </Link>
-                  </Item.Description>
-                )}
-                {event.cancelled && (
-                  <Label
-                    style={{ top: "10px" }}
-                    ribbon="right"
-                    color="red"
-                    content="Встреча отменена"
-                  />
-                )}
-              </Item.Content>
-            </Item>
-          </Item.Group> */}
+          <Image alt="The logo of event" fluid src={`/assets/categoryImages/${event.category}.jpg`} />
         </Segment>
 				<Segment>
 					<h2 style={{textAlign: 'center'}}>{event.title}</h2>

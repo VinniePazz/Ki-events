@@ -150,6 +150,35 @@ div.ui.basic.segment.header {
 	align-items: flex-end;
 }
 
+h5.ui.header {
+	margin: 0 0 .5em 0;
+}
+
+.tab-menu {
+	display: flex;
+}
+
+.tab-item {
+	padding: .5em 1em;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	cursor: pointer;
+	border-right: 1px solid #cccccc;
+}
+
+.tab-item:last-child {
+	border-right: none;
+}
+
+.tab-item:hover {
+	background-color: #eeeeee;
+}
+
+.tab-item.active {
+	background-color: #eeeeee;
+}
+
 @media only screen and (max-width: 767px) {
 	.ui.menu .item>img:not(.ui) {
 		margin-right: 0 !important;
@@ -159,6 +188,10 @@ div.ui.basic.segment.header {
 @media only screen and (max-width: 475px) {
 	.ui.red.button.event {
 		margin: .8em 0 0 0;
+	}
+
+	.ui.top.left.pointing.dropdown>.menu {
+		left: -2.5em;
 	}
 
 	.ui.green.button.event {
@@ -180,5 +213,14 @@ div.ui.basic.segment.header {
 
 	div.item.eventItem {
 		margin: 0 !important;
+	}
+
+	.tab-menu {
+		flex-direction: column;
+	}
+
+	.tab-item {
+		border-right: none;
+		border-bottom: 1px solid #cccccc;
 	}
 }
