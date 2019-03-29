@@ -6,7 +6,7 @@ import PlaceInput from '../../../app/common/form/PlaceInput';
 import SelectInput from '../../../app/common/form/SelectInput';
 
 const interests = [
-  { key: 'саморазвитие', text: 'свморазвитие', value: 'свморазвитие' },
+  { key: 'саморазвитие', text: 'саморазвитие', value: 'свморазвитие' },
   { key: 'books', text: 'книги', value: 'книги' },
   { key: 'film', text: 'кинематограф', value: 'кинематограф' },
   { key: 'food', text: 'кулинария', value: 'кулинария' },

@@ -222,7 +222,7 @@ class PhotosPage extends Component {
         </Segment>
 
         <Segment>
-          <Header content="Все фотографии" textAlign="center" style={style} />
+          <Header content="Все фотографии" style={style} />
 
           <Grid>
             <Grid.Column

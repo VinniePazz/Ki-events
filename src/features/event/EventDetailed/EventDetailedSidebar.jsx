@@ -27,7 +27,7 @@ const EventDetailedSidebar = ({ attendees }) => {
                   color="orange"
                   ribbon="right"
                 >
-                  Организатор
+                  инициатор
                 </Label>}
                 <Item.Image size="tiny" src={attendee.photoURL}/>
                 <Item.Content verticalAlign="middle">

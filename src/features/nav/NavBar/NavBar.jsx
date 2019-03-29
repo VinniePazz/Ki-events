@@ -36,14 +36,18 @@ class NavBar extends Component {
 
     return (
       <>
-        <Responsive as={Menu} maxWidth={669} inverted fixed="top" style={{zIndex: '1000'}}>
-					<Container>
+        <Responsive
+          as={Menu}
+          maxWidth={669}
+          inverted
+          fixed="top"
+          style={{ zIndex: "1000" }}
+        >
+          <Container>
             <Menu.Item as={Link} to="/">
-              <img src="/assets/logo.png" alt="logo" />
+              <Icon name="home" size="large" inverted />
             </Menu.Item>
-            <Menu.Item name='gamepad' as={NavLink} to="/events">
-							<Icon name='gamepad' size="large" inverted />
-						</Menu.Item>
+            <Menu.Item content="Ивенты" as={NavLink} to="/events" />
             {authenticated ? (
               <SignedInMenu
                 auth={auth}
@@ -52,20 +56,29 @@ class NavBar extends Component {
               />
             ) : (
               <SignedOutMenu
+                mobile
                 register={this.handleRegister}
                 signIn={this.handleSignIn}
               />
             )}
           </Container>
-				</Responsive>
+        </Responsive>
 
-        <Responsive as={Menu} minWidth={670} inverted fixed="top" style={{zIndex: '1000'}}>
+        <Responsive
+          as={Menu}
+          minWidth={670}
+          inverted
+          fixed="top"
+          style={{ zIndex: "1000" }}
+        >
           <Container>
             <Menu.Item as={Link} to="/">
-              <img src="/assets/logo.png" alt="logo" />
-              <Responsive minWidth={768}>Kiyv-meet</Responsive>
+              <Icon name="home" size="large" inverted />
             </Menu.Item>
-            <Menu.Item as={NavLink} to="/events" name="Встречи" />
+            <Menu.Item as={NavLink} to="/events" name="Встречи">
+							<img src="/assets/logo.png" alt="logo" />
+							<p>Ивенты</p>
+						</Menu.Item>
             <Menu.Item>
               <Button
                 as={Link}

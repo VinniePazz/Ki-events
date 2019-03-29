@@ -47,7 +47,20 @@ const AsyncNotFound = Loadable({
 })
 
 class App extends Component {
+
+	componentDidMount(){
+   
+			const ele = document.getElementById('ipl-progress-indicator')
+			console.log('HELLO', ele)
+      if(ele){
+				ele.outerHTML = ''
+      }
+			
+			this.setState({loading: false})
+  }
+
   render() {
+
     return (
       <div>
         <AsyncModalManager/>

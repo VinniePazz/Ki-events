@@ -4,27 +4,29 @@ import { Link } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import format from 'date-fns/format';
 
+const ruLocale = require('date-fns/locale/ru')
+
 class EventActivityItem extends Component {
   renderSummary = activity => {
     switch (activity.type) {
       case 'newEvent':
         return (
           <div>
-            New Event!{' '}
+            Новая встреча!{' '}
             <Feed.User as={Link} to={{ pathname: '/profile/' + activity.hostUid }}>
               {activity.hostedBy}
             </Feed.User>{' '}
-            is hosting <Link to={{ pathname: '/event/' + activity.eventId }}>{activity.title}</Link>
+            предложил <Link to={{ pathname: '/event/' + activity.eventId }}>{activity.title}</Link>
           </div>
         );
       case 'cancelledEvent':
         return (
           <div>
-            Event Cancelled!{' '}
+            Встреча отменена!{' '}
             <Feed.User as={Link} to={{ pathname: '/profile/' + activity.hostUid }}>
               {activity.hostedBy}
             </Feed.User>{' '}
-            has cancelled <Link to={{ pathname: '/event/' + activity.eventId }}>{activity.title}</Link>
+            отменил <Link to={{ pathname: '/event/' + activity.eventId }}>{activity.title}</Link>
           </div>
         );
       default:
@@ -34,7 +36,6 @@ class EventActivityItem extends Component {
 
   render() {
     const { activity } = this.props;
-
     return (
       <Feed.Event>
         <Feed.Label>
@@ -43,7 +44,7 @@ class EventActivityItem extends Component {
         <Feed.Content>
           <Feed.Summary>{this.renderSummary(activity)}</Feed.Summary>
           <Feed.Meta>
-            <Feed.Date>{distanceInWordsToNow(format(activity.timestamp))} ago</Feed.Date>
+            <Feed.Date>{distanceInWordsToNow(format(activity.timestamp), {locale: ruLocale})} назад</Feed.Date>
           </Feed.Meta>
         </Feed.Content>
       </Feed.Event>

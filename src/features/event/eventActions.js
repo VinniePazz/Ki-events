@@ -30,9 +30,9 @@ export const createEvent = event => {
         eventDate: event.date,
         host: true
       });
-      toastr.success('Success', 'Event has been created');
+      toastr.success('Успех', 'Встреча была создана');
     } catch (error) {
-      toastr.error('Oops', 'Something went wrong');
+      toastr.error('Упс', 'Повторите попытку позже');
     }
   };
 };
@@ -44,7 +44,7 @@ export const updateEvent = event => {
     if (event.date !== getState().firestore.ordered.events[0].date) {
       event.date = moment(event.date).toDate();
 		}
-		console.log(getState().firestore.ordered.events[0].date)
+		
     try {
       let eventDocRef = firestore.collection('events').doc(event.id);
       let dateEqual = compareAsc(moment(getState().firestore.ordered.events[0].date).toDate(), event.date);
@@ -67,11 +67,11 @@ export const updateEvent = event => {
         await eventDocRef.update(event);
       }
       dispatch(asyncActionFinish());
-      toastr.success('Success', 'Event has been updated');
+      toastr.success('Успех', 'Встреча обновлена');
     } catch (error) {
       console.log(error);
       dispatch(asyncActionError());
-      toastr.error('Oops', 'Something went wrong');
+      toastr.error('Упс', 'Повторите попытку позже');
     }
   };
 };
@@ -83,8 +83,8 @@ export const cancelToggle = (cancelled, eventId) => async (
 ) => {
   const firestore = getFirestore();
   const message = cancelled
-    ? 'Are you sure you want to cancel the event?'
-    : 'This reactivate the event - are you sure?';
+    ? 'Вы действительно хотите отменить встречу?'
+    : 'Это возобновит встречу';
   try {
     toastr.confirm(message, {
       onOk: () =>
@@ -93,7 +93,7 @@ export const cancelToggle = (cancelled, eventId) => async (
         })
     });
   } catch (error) {
-    console.log(error);
+    toastr.error('Упс', 'Повторите попытку позже');
   }
 };
 
@@ -106,7 +106,7 @@ export const deleteEvent = eventId => {
   };
 };
 
-export const getEventsForDashboard = lastEvent => async (dispatch, getState) => {
+export const getEventsForDashboard = lastEvent => async (dispatch) => {
   let today = new Date(Date.now());
   const firestore = firebase.firestore();
   const eventsRef = firestore.collection('events');
@@ -148,7 +148,6 @@ export const getEventsForDashboard = lastEvent => async (dispatch, getState) => 
     dispatch(asyncActionFinish());
     return querySnap;
   } catch (error) {
-    console.log(error);
     dispatch(asyncActionError());
   }
 };
@@ -170,6 +169,6 @@ export const addEventComment = (eventId, values, parentId) =>
       await firebase.push(`event_chat/${eventId}`, newComment)
     } catch (error) {
       console.log(error);
-      toastr.error('Oops', 'Problem adding comment')
+      toastr.error('Упс', 'Повторите попытку')
     }
   }

@@ -16,7 +16,7 @@ const tabs = [
   { content: "Все", index: 0 },
   { content: "Прошедшие", index: 1 },
   { content: "Будущие", index: 2 },
-  { content: "Ваши", index: 3 }
+  { content: "Предложены", index: 3 }
 ];
 
 const UserDeteiledEvents = ({
@@ -45,14 +45,14 @@ const UserDeteiledEvents = ({
           ))}
         </div>
       <Segment attached loading={eventsLoading} style={{border: 'none'}}>
-        <Card.Group>
+        <Card.Group centered>
           {events &&
             events.map(event => (
               <Card as={Link} to={`/event/${event.id}`} key={event.id}>
                 <Image src={`/assets/categoryImages/${event.category}.jpg`} />
                 <Card.Content>
                   <Card.Header textAlign="center">{event.title}</Card.Header>
-                  <Card.Meta textAlign="center">
+                  <Card.Meta textAlign="center" style={{ marginTop: '1em' }}>
                     <div>{format(event.date, "DD MMM YYYY", { locale: ruLocale })}</div>
                     <div>в {format(event.date, "H:mm", { locale: ruLocale })}</div>
                   </Card.Meta>

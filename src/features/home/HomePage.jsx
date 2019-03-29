@@ -3,7 +3,7 @@ import React from "react";
 function HomePage({ history }) {
   return (
     <>
-      <div className="ui inverted vertical masthead center aligned segment">
+      {/* <div className="ui inverted vertical masthead center aligned segment">
         <div className="ui text container">
           <h1 className="ui inverted stackable header">
             <img
@@ -19,7 +19,18 @@ function HomePage({ history }) {
             <i className="right arrow icon" />
           </div>
         </div>
-      </div>
+      </div> */}
+			<header className="bg">
+				<div className="slogan">
+					<p>Планируйте встречи</p>
+					<p>Приглашайте друзей</p>
+					<p>Будьте счастливы</p>
+					<div onClick={() => history.push('/events')} className="ui huge blue bacis inverted button">
+            Начать
+            <i className="right arrow icon" />
+          </div>
+				</div>
+			</header>
     </>
   );
 }

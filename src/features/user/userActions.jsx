@@ -18,9 +18,9 @@ export const updateProfile = user => async (
 
   try {
     await firebase.updateProfile(updatedUser);
-    toastr.success('Success', 'Profile updated');
+    toastr.success('Успех', 'Профиль изменён');
   } catch (error) {
-    console.log(error);
+    toastr.error('Упс', 'Попробуйте еще-раз');
   }
 };
 
@@ -65,9 +65,8 @@ export const uploadProfileImage = (file, fileName) => async (
     })
     dispatch(asyncActionFinish())
   } catch (error) {
-    console.log(error);
     dispatch(asyncActionError())
-    throw new Error('Problem uploading photo')
+    throw new Error('Проблемы с загрузкой фотографии')
   }
 };
 
@@ -136,11 +135,11 @@ export const deletePhoto = (photo) =>
 
 			await batch.commit();
 			dispatch(asyncActionFinish());
-			toastr.success('Success', 'Main photo has been updated');
+			toastr.success('Успех', 'Основное фото изменено');
 		} catch (error) {
 			console.log(error);
 			dispatch(asyncActionError())
-			throw new Error('Problem setting main photo');
+			throw new Error('Установить фото профиля не удается');
 		}
 	};
 	
@@ -173,11 +172,11 @@ export const deletePhoto = (photo) =>
 				})
 			})
 			dispatch(asyncActionFinish())
-			toastr.success('Success', 'You have signed up to the event');
+			toastr.success('Успех', 'Вы стали участником встречи');
 		} catch (error) {
 			console.log(error);
 			dispatch(asyncActionError())
-			toastr.error('Oops', 'Problem signing up to event');
+			toastr.error('Упс', 'Попробуйте еще-раз');
 		}
 	};
 
@@ -191,10 +190,9 @@ export const cancelGoingToEvent = (event) =>
         [`attendees.${user.uid}`]: firestore.FieldValue.delete()
       })
       await firestore.delete(`event_attendee/${event.id}_${user.uid}`);
-      toastr.success('Success', 'You have removed yourself from the event');
+      toastr.success('Успех', 'Вы передумали идти на встречу');
     } catch (error) {
-      console.log(error)
-      toastr.error('Oops', 'something went wrong')
+      toastr.error('Упс', 'Попробуйте еще-раз')
     }
 
 	}
@@ -240,7 +238,6 @@ export const cancelGoingToEvent = (event) =>
 			
 			dispatch(asyncActionFinish());
 		} catch (error) {
-			console.log(error);
 			dispatch(asyncActionError());
 		}
 	};
@@ -264,7 +261,7 @@ export const cancelGoingToEvent = (event) =>
 				following
 			);
 		} catch (error) {
-			console.log(error);
+			toastr.error('Упс', 'Попробуйте еще-раз')
 		}
 	}
 	
@@ -280,6 +277,6 @@ export const cancelGoingToEvent = (event) =>
 					subcollections: [{collection: 'following', doc: userToUnfollow.id}]
 				})
 			} catch (error) {
-				console.log(error)
+				toastr.error('Упс', 'Попробуйте еще-раз')
 			}
 		}

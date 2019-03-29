@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { Grid, Header, Image, Segment, Icon } from "semantic-ui-react";
+import LazyLoad from "react-lazyload";
 
 class UserDetailedPhotos extends Component {
-shouldComponentUpdate(nextProps, nextState) {
-		if (nextProps.photos.length !== this.props.photos.length) {
-			return true;
-		}
-		return false;
-	}	
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.photos.length !== this.props.photos.length) {
+      return true;
+    }
+    return false;
+  }
   render() {
-		const { photos } = this.props;
+    const { photos } = this.props;
     return (
       <Grid.Column width={16}>
         <Segment style={{ display: "flex", justifyContent: "center" }}>
@@ -22,7 +23,15 @@ shouldComponentUpdate(nextProps, nextState) {
         <Segment attached textAlign="center">
           <Image.Group size="medium">
             {photos &&
-              photos.map(photo => <Image src={photo.url} key={photo.id} />)}
+              photos.map(photo => (
+                <LazyLoad
+                  key={photo.id}
+                  height={300}
+                  placeholder={<Image src="/assets/user.png" />}
+                >
+                  <Image src={photo.url} />
+                </LazyLoad>
+              ))}
           </Image.Group>
         </Segment>
       </Grid.Column>
