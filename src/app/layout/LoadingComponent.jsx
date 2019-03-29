@@ -6,7 +6,7 @@ const LoadingComponent = ({ inverted, pastDelay, error, retry}) => {
     <>
       {pastDelay && !error && (
         <Dimmer active={true}>
-          <Loader content="Загрузка..." />
+          <Loader />
         </Dimmer>
       )}
 			{error && <div>Error! <button onClick={ retry }>Retry</button></div>}

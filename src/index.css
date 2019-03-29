@@ -266,7 +266,11 @@ h5.ui.header {
   .tab-item {
     border-right: none;
     border-bottom: 1px solid #cccccc;
-  }
+	}
+	
+	.bg {
+		padding: 0 2em 5em 2em;
+	}
 }
 
 @media only screen and (min-width: 1600px) {

@@ -43,7 +43,7 @@ const category = [
   { key: "party", text: "Вечеринка", value: "party" },
   { key: "pub", text: "Паб", value: "pub" },
   { key: "culture", text: "Культурное мероприятие", value: "culture" },
-  { key: "cinema", text: "Кино", value: "cinema" },
+  { key: "film", text: "Кино", value: "film" },
   { key: "theatre", text: "Театр", value: "theatre" },
   { key: "food", text: "Званый Ужин", value: "food" },
   { key: "music", text: "Музыка", value: "music" },

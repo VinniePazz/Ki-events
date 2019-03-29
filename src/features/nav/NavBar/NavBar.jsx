@@ -47,7 +47,9 @@ class NavBar extends Component {
             <Menu.Item as={Link} to="/">
               <Icon name="home" size="large" inverted />
             </Menu.Item>
-            <Menu.Item content="Ивенты" as={NavLink} to="/events" />
+            <Menu.Item as={NavLink} to="/events">
+							<img src="/assets/logo.png" alt="logo" />
+						</Menu.Item>
             {authenticated ? (
               <SignedInMenu
                 auth={auth}
