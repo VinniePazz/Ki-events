@@ -12,7 +12,7 @@ class BasicPage extends Component {
     const { pristine, submitting, handleSubmit, updateProfile } = this.props;
     return (
       <Segment clearing>
-        <Header dividing size="large" content="Basics" />
+        <Header dividing size="large" content="Общие" />
         <Form onSubmit={handleSubmit(updateProfile)}>
           <Field
             width={16}

@@ -79,7 +79,7 @@ class NavBar extends Component {
             </Menu.Item>
             <Menu.Item as={NavLink} to="/events" name="Встречи">
 							<img src="/assets/logo.png" alt="logo" />
-							<p>Ивенты</p>
+							<p>Встречи</p>
 						</Menu.Item>
             <Menu.Item>
               <Button
@@ -88,7 +88,7 @@ class NavBar extends Component {
                 floated="right"
                 positive
                 inverted
-                content="Предложить встречу"
+                content="Создать встречу"
               />
             </Menu.Item>
             {authenticated ? (

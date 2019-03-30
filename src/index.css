@@ -20,7 +20,7 @@ code {
 }
 
 .bg {
-	opacity: 1;
+	opacity: 0;
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(
@@ -35,8 +35,26 @@ code {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-
+	animation: bg-animated .8s linear;
 	padding: 5em;
+}
+
+@keyframes bg-animated {
+	0% {
+    opacity: .4;
+  }
+
+	50% {
+		opacity: .6;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.bg {
+	opacity: 1;
 }
 
 .slogan {
@@ -146,7 +164,7 @@ code {
 }
 
 .ui.menu .item > img:not(.ui) {
-  margin-right: 1.5em !important;
+  margin-right: .5em !important;
 }
 
 .ui.menu:not(.vertical) .item > .button {
@@ -271,6 +289,7 @@ h5.ui.header {
 	.bg {
 		padding: 0 2em 5em 2em;
 	}
+
 }
 
 @media only screen and (min-width: 1600px) {

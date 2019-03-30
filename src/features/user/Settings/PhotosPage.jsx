@@ -67,9 +67,9 @@ class PhotosPage extends Component {
         this.state.fileName
       );
       this.cancelCrop();
-      toastr.success("Success", "Photo has been uploaded");
+      toastr.success("Успех", "Фото загружено");
     } catch (error) {
-      toastr.error("Oops", error.message);
+      toastr.error("Упс", 'Что-то пошло не так');
     }
   };
 

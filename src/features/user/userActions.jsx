@@ -83,8 +83,7 @@ export const deletePhoto = (photo) =>
         subcollections: [{collection: 'photos', doc: photo.id}]
       })
     } catch (error) {
-      console.log(error);
-      throw new Error('Problem deleting the photo')
+      throw new Error('Проблема с удалением фото')
     }
   }
 
@@ -139,7 +138,7 @@ export const deletePhoto = (photo) =>
 		} catch (error) {
 			console.log(error);
 			dispatch(asyncActionError())
-			throw new Error('Установить фото профиля не удается');
+			throw new Error('Установить фото профиля не удалось');
 		}
 	};
 	

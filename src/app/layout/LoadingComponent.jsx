@@ -5,7 +5,7 @@ const LoadingComponent = ({ inverted, pastDelay, error, retry}) => {
   return (
     <>
       {pastDelay && !error && (
-        <Dimmer active={true}>
+        <Dimmer active={true} inverted>
           <Loader />
         </Dimmer>
       )}

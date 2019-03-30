@@ -1,38 +1,45 @@
-import React from 'react';
-import { Segment, List, Label, Item } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Segment, List, Label, Item } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const EventDetailedSidebar = ({ attendees }) => {
-  
   return (
     <div>
       <Segment
         textAlign="center"
-        style={{ border: 'none' }}
+        style={{ border: "none" }}
         attached="top"
         secondary
         inverted
         color="teal"
       >
-        {attendees && attendees.length} {attendees && attendees.length === 1 ? 'Участник' : attendees.length >= 4 ? 'Участника присоединилось' : 'Участников присоединилось'}
+        {attendees && attendees.length}{" "}
+        {attendees && attendees.length === 1
+          ? "Участник"
+          : attendees.length <= 4
+          ? "Участника"
+          : "Участников"}
       </Segment>
       <Segment attached>
         <List relaxed divided>
           {attendees &&
             attendees.map(attendee => (
-              <Item key={attendee.id} style={{ position: 'relative' }}>
-                {attendee.host &&
-                <Label
-                  style={{ position: 'absolute' }}
-                  color="orange"
-                  ribbon="right"
-                >
-                  инициатор
-                </Label>}
-                <Item.Image size="tiny" src={attendee.photoURL}/>
+              <Item key={attendee.id} style={{ position: "relative" }}>
+                {attendee.host && (
+                  <Label
+                    style={{ position: "absolute" }}
+                    color="orange"
+                    ribbon="right"
+                  >
+                    хост
+                  </Label>
+                )}
+                <Item.Image size="tiny" src={attendee.photoURL} />
                 <Item.Content verticalAlign="middle">
                   <Item.Header as="h3">
-                    <Link to={`/profile/${attendee.id}`}>{attendee.displayName}</Link>
+                    <Link to={`/profile/${attendee.id}`}>
+                      {attendee.displayName}
+                    </Link>
                   </Item.Header>
                 </Item.Content>
               </Item>
