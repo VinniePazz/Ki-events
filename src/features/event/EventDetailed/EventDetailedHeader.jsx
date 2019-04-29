@@ -24,7 +24,7 @@ const EventDetailedHeader = ({ openModal, authenticated, loading, event, isHost,
                   style={{ color: 'white', marginBottom: '.2em' }}
                 />
                 <p>
-                  Hosted by <Link to={`/profile/${event.hostUid}`} style={{color: '#ffffff'}}>{event.hostedBy}</Link>
+                  Создал <Link to={`/profile/${event.hostUid}`} style={{color: '#ffffff'}}>{event.hostedBy}</Link>
                 </p>
               </Item.Content>
             </Item>
