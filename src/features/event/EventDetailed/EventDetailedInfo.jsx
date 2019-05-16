@@ -7,7 +7,7 @@ const ruLocale = require('date-fns/locale/ru')
 
 class EventDetailedInfo extends Component {
   state = {
-    showMap: false
+    showMap: true
   }
 
   componentWillUnmount() {

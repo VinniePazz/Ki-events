@@ -6,9 +6,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Lato, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(234, 234, 234) !important;
@@ -20,7 +18,7 @@ code {
 }
 
 .bg {
-	opacity: 0;
+  opacity: 0;
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(
@@ -29,48 +27,48 @@ code {
       rgba(24, 22, 22, 0.541) 70%
     ),
     url(/assets/friends-bg.jpg);
-	background-size: cover;
-	background-position: center;
+  background-size: cover;
+  background-position: center;
 
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	animation: bg-animated .8s linear;
-	padding: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: bg-animated 0.8s linear;
+  padding: 5em;
 }
 
 @keyframes bg-animated {
-	0% {
-    opacity: .4;
+  0% {
+    opacity: 0.4;
   }
 
-	50% {
-		opacity: .6;
-	}
+  50% {
+    opacity: 0.6;
+  }
 
-	100% {
-		opacity: 1;
-	}
+  100% {
+    opacity: 1;
+  }
 }
 
 .bg {
-	opacity: 1;
+  opacity: 1;
 }
 
 .slogan {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .slogan p {
-	font-size: 1.2rem;
-	color: #c2bbbb;
+  font-size: 1.2rem;
+  color: #c2bbbb;
 }
 
 .slogan p:last-of-type {
-	margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 /*timepicker style*/
@@ -143,9 +141,8 @@ code {
 .ui.fixed.menu {
   background-image: linear-gradient(
     135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
+    rgb(33, 138, 174),
+    rgb(32, 167, 172)
   ) !important;
 }
 
@@ -164,7 +161,7 @@ code {
 }
 
 .ui.menu .item > img:not(.ui) {
-  margin-right: .5em !important;
+  margin-right: 0.5em !important;
 }
 
 .ui.menu:not(.vertical) .item > .button {
@@ -235,8 +232,8 @@ h5.ui.header {
   background-color: #eeeeee;
 }
 
-.ui.menu .item>i.icon {
-	margin: 0;
+.ui.menu .item > i.icon {
+  margin: 0;
 }
 
 /* MEDIA QUERIES */
@@ -284,16 +281,15 @@ h5.ui.header {
   .tab-item {
     border-right: none;
     border-bottom: 1px solid #cccccc;
-	}
-	
-	.bg {
-		padding: 0 2em 5em 2em;
-	}
+  }
 
+  .bg {
+    padding: 0 2em 5em 2em;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
-	html {
-		font-size: 20px;
-	}
+  html {
+    font-size: 20px;
+  }
 }

@@ -74,8 +74,8 @@ class NavBar extends Component {
           style={{ zIndex: "1000" }}
         >
           <Container>
-            <Menu.Item as={Link} to="/">
-              <Icon name="home" size="large" inverted />
+            <Menu.Item as={Link} to="/" style={{borderLeft: 'none'}}>
+              <Icon name="home" size="large" style={{color: '#ffffff'}} />
             </Menu.Item>
             <Menu.Item as={NavLink} to="/events" name="Встречи">
 							<img src="/assets/logo.png" alt="logo" />

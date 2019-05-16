@@ -69,7 +69,7 @@ class PhotosPage extends Component {
       this.cancelCrop();
       toastr.success("Успех", "Фото загружено");
     } catch (error) {
-      toastr.error("Упс", 'Что-то пошло не так');
+      toastr.error("Упс", "Что-то пошло не так");
     }
   };
 
@@ -121,7 +121,6 @@ class PhotosPage extends Component {
     return (
       <>
         <Segment>
-          <Header dividing content="Твои фотографии" textAlign="center" />
           <Grid stackable centered>
             <Grid.Column
               textAlign="center"
