@@ -1,68 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Ki-events - social network clone with realtime changing functionallity
 
-## Available Scripts
+Ki-events it's a place where you can find, post and join to all interesting events of all sorts in your city! 💣💣💣
 
-In the project directory, you can run:
+Oh nooo, it's another social network clone 😒. Anyway, feel free to visit this web app. Maybe you'll find the love there, why not 😉
 
-### `npm start`
+## Tech stack:
+* Front-end: [React](https://reactjs.org), state management - [Redux](https://redux.js.org), client-routing - [React-Router](https://reacttraining.com/react-router)
+* Back-end side fully implemented via [Firebase services](https://firebase.google.com) including **Firestore**, **Firebase Storage**, **Realtime database**, **Firebase cloud functions**
+* Async requests: [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
+* Styling: [Semantic UI](https://semantic-ui.com) and inline styles
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features: 
+- [x] Browsing, adding, joining, editing events in the city you interested in
+- [x] Authorization and authentification: e-mail flow and Google OAuth with **Firebase**
+- [x] User profile with photo-uploading, bio information, subscribers etc
+- [x] Chat system with realtime changes at each existing event for signed in people
+- [x] Google maps location system for simple browsing of the events
+- [x] Realtime notifications about new events and people who creat it
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+That's all the main functionallity presented on the app 🤘 Feel free to visit app and try to edit something. Your private info isnt used anywhere!!! Cause site was created only with educational intention in mind!
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+###### You can  freely send me any suggestions, proposals ets on my <a href="mailto:dimasmakouz@gmail.com" target="blank">mail</a>
