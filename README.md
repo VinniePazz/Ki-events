@@ -1,4 +1,4 @@
-# Ki-events - social network clone with real-time changing functionality
+# Ki-events - social network clone with real-time changing functionality (language: ru)
 
 Ki-events it's a place where you can find, post and join to all interesting events of all sorts in your city! 💣💣💣
 
